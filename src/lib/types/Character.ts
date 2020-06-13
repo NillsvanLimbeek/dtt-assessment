@@ -10,21 +10,12 @@ export interface Character {
     image: string;
     episode: string[];
     url: string;
-    created: Date;
+    created: string;
 }
 
-enum Status {
-    alive,
-    dead,
-    unknown,
-}
+type Status = 'Alive' | 'Dead' | 'Unknown';
 
-enum Gender {
-    female,
-    male,
-    genderless,
-    unknown,
-}
+type Gender = 'Female' | 'Male' | 'Genderless' | 'Unknown';
 
 interface Origin {
     name: string;

@@ -1,7 +1,7 @@
 <template>
     <div class="card">
+        <img :src="character.image" :alt="character.name" />
         <h2>{{ character.name }}</h2>
-        <p>{{ character.status }}</p>
     </div>
 </template>
 

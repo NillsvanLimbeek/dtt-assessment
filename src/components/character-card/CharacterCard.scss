@@ -1,0 +1,16 @@
+.card {
+    @include flex-align;
+    flex-direction: column;
+
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card h2 {
+    margin: 0;
+}

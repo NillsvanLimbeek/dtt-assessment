@@ -1,0 +1,11 @@
+.home__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2.5rem;
+
+    padding: 0;
+}
+
+.home__list li {
+    list-style: none;
+}

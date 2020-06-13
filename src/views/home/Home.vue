@@ -1,7 +1,6 @@
 <template>
-    <main>
-        <h2>Home</h2>
-        <ul>
+    <main class="home">
+        <ul class="home__list">
             <li v-for="character in getCharacters" :key="character.id">
                 <RouterLink
                     :to="{
@@ -43,4 +42,4 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" src="./Home.scss"></style>

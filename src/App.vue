@@ -8,7 +8,7 @@
 <script lang="ts">
 import Vue from 'vue';
 
-const Navigation = () => import('@components/navigation/Navigation.vue');
+const Navigation = () => import('@/components/navigation/Navigation.vue');
 
 export default Vue.extend({
     name: 'Home',

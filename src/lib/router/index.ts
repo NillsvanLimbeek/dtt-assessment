@@ -8,20 +8,40 @@ const routes: Array<RouteConfig> = [
         path: '/',
         name: 'Home',
         component: () =>
-            import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+            import(/* webpackChunkName: "home" */ '@/views/home/Home.vue'),
     },
     {
         path: '/random',
         name: 'Random',
         component: () =>
-            import(/* webpackChunkName: "random" */ '@/views/Random.vue'),
+            import(
+                /* webpackChunkName: "random" */ '@/views/random/Random.vue'
+            ),
     },
     {
         path: '/character/:id',
         name: 'CharacterDetail',
         component: () =>
             import(
-                /* webpackChunkName: "random" */ '@/views/character-detail/CharacterDetail.vue'
+                /* webpackChunkName: "character-detail" */ '@/views/character-detail/CharacterDetail.vue'
+            ),
+        props: true,
+    },
+    {
+        path: '/location/:id',
+        name: 'LocationDetail',
+        component: () =>
+            import(
+                /* webpackChunkName: "location-detail" */ '@/views/location-detail/LocationDetail.vue'
+            ),
+        props: true,
+    },
+    {
+        path: '/episode/:id',
+        name: 'EpisodeDetail',
+        component: () =>
+            import(
+                /* webpackChunkName: "episode-detail" */ '@/views/episode-detail/EpisodeDetail.vue'
             ),
         props: true,
     },
