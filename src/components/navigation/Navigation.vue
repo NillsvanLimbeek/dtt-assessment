@@ -1,7 +1,7 @@
 <template>
     <nav class="nav">
-        <RouterLink to="/home">Home</RouterLink>
-        <RouterLink to="/random">Random</RouterLink>
+        <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
+        <RouterLink :to="{ name: 'Random' }">Random</RouterLink>
     </nav>
 </template>
 
@@ -13,5 +13,4 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" src="./Navigation.scss">
-</style>
+<style lang="scss" src="./Navigation.scss"></style>

@@ -32,8 +32,8 @@ export const actions: Actions = {
             })
             .join(',');
 
-        // fetch(`https://rickandmortyapi.com/api/character/${randomNumbers}`)
-        //     .then((res) => res.json())
-        //     .then((data: Character[]) => mutations.setCharacters(data));
+        fetch(`https://rickandmortyapi.com/api/character/${randomNumbers}`)
+            .then((res) => res.json())
+            .then((data: Character[]) => mutations.setCharacters(data));
     },
 };

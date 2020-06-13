@@ -1,9 +1,16 @@
 <template>
     <main>
+        <h2>Home</h2>
         <ul>
             <li v-for="character in getCharacters" :key="character.id">
-                <img :src="character.image" :alt="character.name" />
-                <p>{{ character.name }}</p>
+                <RouterLink
+                    :to="{
+                        name: 'CharacterDetail',
+                        params: { id: character.id },
+                    }"
+                >
+                    <CharacterCard :character="character" />
+                </RouterLink>
             </li>
         </ul>
     </main>
@@ -12,10 +19,16 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import { getters, actions } from '@/store/characters';
+import { getters, actions } from '@/lib/store/characters';
+
+const CharacterCard = () =>
+    import('@/components/character-card/CharacterCard.vue');
 
 export default Vue.extend({
     name: 'Home',
+    components: {
+        CharacterCard,
+    },
     data() {
         return {};
     },
