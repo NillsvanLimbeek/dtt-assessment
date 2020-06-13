@@ -2,6 +2,7 @@
 node_modules
 /dist
 .vscode
+/assets
 
 # local env files
 .env.local

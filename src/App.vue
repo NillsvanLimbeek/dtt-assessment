@@ -1,18 +1,21 @@
 <template>
     <div id="app">
-        <HelloWorld />
+        <Navigation />
+        <router-view />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+
+const Navigation = () => import('@components/navigation/Navigation.vue');
 
 export default Vue.extend({
+    name: 'Home',
     components: {
-        HelloWorld,
+        Navigation,
     },
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" src="./styling/main.scss"></style>
