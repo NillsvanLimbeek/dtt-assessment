@@ -1,14 +1,20 @@
 <template>
     <div class="detail">
-        <h1>Info:</h1>
-        <h3>{{ character.name }}</h3>
+        <img :src="character.image" :alt="character.name" class="detail__img" />
 
-        <EpisodeCard
-            v-if="Object.keys(episode).length > 0"
-            :episode="episode"
-        />
+        <div class="detail__info">
+            <h3>Info</h3>
+            <h4>{{ character.name }}</h4>
+        </div>
 
-        <CardList v-else type="episode" :cards="episodes" />
+        <div class="detail__episodes">
+            <EpisodeCard
+                v-if="Object.keys(episode).length > 0"
+                :episode="episode"
+            />
+
+            <CardList v-else type="episode" :cards="episodes" />
+        </div>
     </div>
 </template>
 
@@ -51,17 +57,13 @@ export default Vue.extend({
             });
 
             if (episodeIds.length === 1) {
-                const episode = await fetchData<Episode>(
+                this.episode = await fetchData<Episode>(
                     `episode/${episodeIds}`,
                 );
-
-                this.episode = episode;
             } else {
-                const episodes = await fetchData<Episode[]>(
+                this.episodes = await fetchData<Episode[]>(
                     `episode/${episodeIds}`,
                 );
-
-                this.episodes = episodes;
             }
         },
     },

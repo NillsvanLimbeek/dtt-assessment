@@ -1,3 +1,55 @@
 .nav {
-    @include flex-center;
+    @include flex-center-align;
+
+    position: fixed;
+
+    height: 5rem;
+    width: 100vw;
+
+    border-bottom: 1px solid var(--color-grey);
+    margin-bottom: 1.5rem;
+    background-color: var(--color-white);
+    box-shadow: 0px 2px 7px #4e4e4e3a;
+}
+
+.nav__inner {
+    @include flex-align;
+    justify-content: space-between;
+
+    height: 100%;
+    width: 95%;
+}
+
+.nav__title {
+    font-weight: 600;
+}
+
+.nav__title span {
+    font-weight: 400;
+}
+
+.nav__links {
+    @include flex-align;
+    height: 100%;
+}
+
+.nav__link {
+    @include flex-align;
+
+    height: 100%;
+
+    padding: 0 1rem;
+    color: var(--color-black);
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+
+    &:hover {
+        color: var(--color-blue);
+        border-bottom: 2px solid var(--color-blue);
+    }
+}
+
+.nav__link--active {
+    color: var(--color-blue);
+    border-bottom: 2px solid var(--color-blue);
 }

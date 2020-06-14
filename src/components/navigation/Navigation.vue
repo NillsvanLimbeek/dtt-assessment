@@ -1,7 +1,33 @@
 <template>
     <nav class="nav">
-        <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
-        <RouterLink :to="{ name: 'Random' }">Random</RouterLink>
+        <div class="nav__inner">
+            <p class="nav__title">DTT<span>Assessment</span></p>
+
+            <div class="nav__links">
+                <RouterLink
+                    :to="{ name: 'Home' }"
+                    class="nav__link"
+                    :class="{ 'nav__link--active': $route.name === 'Home' }"
+                >
+                    Home
+                </RouterLink>
+                <RouterLink
+                    :to="{ name: 'Random' }"
+                    class="nav__link"
+                    :class="{ 'nav__link--active': $route.name === 'Random' }"
+                >
+                    Random
+                </RouterLink>
+            </div>
+
+            <a
+                class="nav__link"
+                href="https://github.com/NillsvanLimbeek/dtt-assessment"
+                target="_blank"
+            >
+                <i class="fab fa-github" />
+            </a>
+        </div>
     </nav>
 </template>
 

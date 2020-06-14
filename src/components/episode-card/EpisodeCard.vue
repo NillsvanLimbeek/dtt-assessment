@@ -1,9 +1,9 @@
 <template>
-    <div class="episode">
-        <RouterLink :to="{ name: 'EpisodeDetail', params: { id: episode.id } }">
+    <RouterLink :to="{ name: 'EpisodeDetail', params: { id: episode.id } }">
+        <div class="episode">
             <h4>{{ episode.episode }} {{ episode.name }}</h4>
-        </RouterLink>
-    </div>
+        </div>
+    </RouterLink>
 </template>
 
 <script lang="ts">

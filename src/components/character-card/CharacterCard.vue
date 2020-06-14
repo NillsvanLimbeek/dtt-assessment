@@ -1,12 +1,10 @@
 <template>
-    <div class="character">
-        <RouterLink
-            :to="{ name: 'CharacterDetail', params: { id: character.id } }"
-        >
+    <RouterLink :to="{ name: 'CharacterDetail', params: { id: character.id } }">
+        <div class="character">
             <img :src="character.image" :alt="character.name" />
             <h2>{{ character.name }}</h2>
-        </RouterLink>
-    </div>
+        </div>
+    </RouterLink>
 </template>
 
 <script lang="ts">
