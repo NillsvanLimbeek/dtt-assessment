@@ -8,11 +8,12 @@
 import Vue from 'vue';
 
 import { Location } from '@/lib/types';
+import { fetchData } from '../../lib/fetchData';
 
 export default Vue.extend({
     props: {
-        url: {
-            type: String,
+        id: {
+            type: Number,
             required: true,
             default: null,
         },
@@ -22,10 +23,9 @@ export default Vue.extend({
             location: {} as Location,
         };
     },
-    mounted() {
-        fetch(this.url)
-            .then((res) => res.json())
-            .then((data) => (this.location = data));
+    async mounted() {
+        const data = await fetchData<Location>(`location/${this.id}`);
+        this.location = data;
     },
 });
 </script>

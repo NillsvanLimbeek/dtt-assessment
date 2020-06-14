@@ -3,38 +3,23 @@
         <h1>Info:</h1>
         <h3>{{ character.name }}</h3>
 
-        <h1>Origin:</h1>
+        <EpisodeCard
+            v-if="Object.keys(episode).length > 0"
+            :episode="episode"
+        />
 
-        <div v-if="character.origin && character.origin.url">
-            <RouterLink
-                :to="{
-                    name: 'LocationDetail',
-                    params: { url: character.origin.url },
-                }"
-            >
-                <h3>{{ character.origin.name }}</h3>
-            </RouterLink>
-        </div>
-
-        <h1>Episode:</h1>
-        <div v-if="character.episode">
-            <RouterLink
-                :to="{
-                    name: 'EpisodeDetail',
-                    params: { url: character.episode[0] },
-                }"
-            >
-                <h3>{{ character.episode[0] }}</h3>
-            </RouterLink>
-        </div>
+        <CardList v-else type="episode" :cards="episodes" />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
-import { getters } from '@/lib/store/characters';
-import { Character } from '@/lib/types';
+import { Character, Episode } from '@/lib/types';
+import { fetchData } from '@/lib/fetchData';
+
+import CardList from '@/components/card-list/CardList.vue';
+import EpisodeCard from '@/components/episode-card/EpisodeCard.vue';
 
 export default Vue.extend({
     props: {
@@ -44,13 +29,44 @@ export default Vue.extend({
             default: null,
         },
     },
+    components: {
+        EpisodeCard,
+        CardList,
+    },
     data() {
         return {
             character: {} as Character,
+            episodes: [] as Episode[],
+            episode: {} as Episode,
         };
     },
-    mounted() {
-        this.character = getters.getCharacter(this.id);
+    methods: {
+        async getEpisodes() {
+            const episodeIds = this.character.episode.map((eps) => {
+                const split = eps.split('/');
+                return split[split.length - 1];
+            });
+
+            if (episodeIds.length === 1) {
+                const episode = await fetchData<Episode>(
+                    `episode/${episodeIds}`,
+                );
+
+                this.episode = episode;
+            } else {
+                const episodes = await fetchData<Episode[]>(
+                    `episode/${episodeIds}`,
+                );
+
+                this.episodes = episodes;
+            }
+        },
+    },
+    async mounted() {
+        const data = await fetchData<Character>(`character/${this.id}`);
+        this.character = data;
+
+        this.getEpisodes();
     },
 });
 </script>

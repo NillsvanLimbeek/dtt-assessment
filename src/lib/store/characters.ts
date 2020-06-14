@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 import { Character, State, Actions, Getters, Mutations } from '@/lib/types';
+import { fetchData } from '../fetchData';
 
 const state: State = Vue.observable({
     characters: [
@@ -12,18 +13,15 @@ const state: State = Vue.observable({
             type: '',
             gender: 'Male',
             origin: {
-                name: 'Earth',
+                name: 'Earth (C-137)',
                 url: 'https://rickandmortyapi.com/api/location/1',
             },
             location: {
-                name: 'Earth',
+                name: 'Earth (Replacement Dimension)',
                 url: 'https://rickandmortyapi.com/api/location/20',
             },
             image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-            episode: [
-                'https://rickandmortyapi.com/api/episode/1',
-                'https://rickandmortyapi.com/api/episode/2',
-            ],
+            episode: ['https://rickandmortyapi.com/api/episode/1'],
             url: 'https://rickandmortyapi.com/api/character/1',
             created: '2017-11-04T18:48:46.250Z',
         },
@@ -35,17 +33,51 @@ const state: State = Vue.observable({
             type: '',
             gender: 'Male',
             origin: {
-                name: 'Earth',
+                name: 'Earth (C-137)',
                 url: 'https://rickandmortyapi.com/api/location/1',
             },
             location: {
-                name: 'Earth',
+                name: 'Earth (Replacement Dimension)',
                 url: 'https://rickandmortyapi.com/api/location/20',
             },
             image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
             episode: [
                 'https://rickandmortyapi.com/api/episode/1',
                 'https://rickandmortyapi.com/api/episode/2',
+                'https://rickandmortyapi.com/api/episode/3',
+                'https://rickandmortyapi.com/api/episode/4',
+                'https://rickandmortyapi.com/api/episode/5',
+                'https://rickandmortyapi.com/api/episode/6',
+                'https://rickandmortyapi.com/api/episode/7',
+                'https://rickandmortyapi.com/api/episode/8',
+                'https://rickandmortyapi.com/api/episode/9',
+                'https://rickandmortyapi.com/api/episode/10',
+                'https://rickandmortyapi.com/api/episode/11',
+                'https://rickandmortyapi.com/api/episode/12',
+                'https://rickandmortyapi.com/api/episode/13',
+                'https://rickandmortyapi.com/api/episode/14',
+                'https://rickandmortyapi.com/api/episode/15',
+                'https://rickandmortyapi.com/api/episode/16',
+                'https://rickandmortyapi.com/api/episode/17',
+                'https://rickandmortyapi.com/api/episode/18',
+                'https://rickandmortyapi.com/api/episode/19',
+                'https://rickandmortyapi.com/api/episode/20',
+                'https://rickandmortyapi.com/api/episode/21',
+                'https://rickandmortyapi.com/api/episode/22',
+                'https://rickandmortyapi.com/api/episode/23',
+                'https://rickandmortyapi.com/api/episode/24',
+                'https://rickandmortyapi.com/api/episode/25',
+                'https://rickandmortyapi.com/api/episode/26',
+                'https://rickandmortyapi.com/api/episode/27',
+                'https://rickandmortyapi.com/api/episode/28',
+                'https://rickandmortyapi.com/api/episode/29',
+                'https://rickandmortyapi.com/api/episode/30',
+                'https://rickandmortyapi.com/api/episode/31',
+                'https://rickandmortyapi.com/api/episode/32',
+                'https://rickandmortyapi.com/api/episode/33',
+                'https://rickandmortyapi.com/api/episode/34',
+                'https://rickandmortyapi.com/api/episode/35',
+                'https://rickandmortyapi.com/api/episode/36',
             ],
             url: 'https://rickandmortyapi.com/api/character/2',
             created: '2017-11-04T18:50:21.651Z',
@@ -72,14 +104,15 @@ export const mutations: Mutations = {
 };
 
 export const actions: Actions = {
-    fetchCharacters() {
+    async fetchCharacters() {
         // const randomNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         //     .map((_num) => {
         //         return Math.floor(Math.random() * 350);
         //     })
         //     .join(',');
-        // fetch(`https://rickandmortyapi.com/api/character/${randomNumbers}`)
-        //     .then((res) => res.json())
-        //     .then((data: Character[]) => mutations.setCharacters(data));
+        // const characters = await fetchData<Character[]>(
+        //     `character/${randomNumbers}`,
+        // );
+        // mutations.setCharacters(characters);
     },
 };

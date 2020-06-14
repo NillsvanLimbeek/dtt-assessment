@@ -1,17 +1,6 @@
 <template>
     <main class="home">
-        <ul class="home__list">
-            <li v-for="character in getCharacters" :key="character.id">
-                <RouterLink
-                    :to="{
-                        name: 'CharacterDetail',
-                        params: { id: character.id },
-                    }"
-                >
-                    <CharacterCard :character="character" />
-                </RouterLink>
-            </li>
-        </ul>
+        <CardList type="character" :cards="getCharacters" />
     </main>
 </template>
 
@@ -20,13 +9,12 @@ import Vue from 'vue';
 
 import { getters, actions } from '@/lib/store/characters';
 
-const CharacterCard = () =>
-    import('@/components/character-card/CharacterCard.vue');
+import CardList from '@/components/card-list/CardList.vue';
 
 export default Vue.extend({
     name: 'Home',
     components: {
-        CharacterCard,
+        CardList,
     },
     data() {
         return {};

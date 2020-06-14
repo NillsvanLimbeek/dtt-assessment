@@ -1,7 +1,11 @@
 <template>
-    <div class="card">
-        <img :src="character.image" :alt="character.name" />
-        <h2>{{ character.name }}</h2>
+    <div class="character">
+        <RouterLink
+            :to="{ name: 'CharacterDetail', params: { id: character.id } }"
+        >
+            <img :src="character.image" :alt="character.name" />
+            <h2>{{ character.name }}</h2>
+        </RouterLink>
     </div>
 </template>
 
