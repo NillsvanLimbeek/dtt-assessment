@@ -29,10 +29,12 @@ export default Vue.extend({
             default: null,
         },
     },
+
     components: {
         EpisodeCard,
         CardList,
     },
+
     data() {
         return {
             character: {} as Character,
@@ -40,6 +42,7 @@ export default Vue.extend({
             episode: {} as Episode,
         };
     },
+
     methods: {
         async getEpisodes() {
             const episodeIds = this.character.episode.map((eps) => {
@@ -62,6 +65,7 @@ export default Vue.extend({
             }
         },
     },
+
     async mounted() {
         const data = await fetchData<Character>(`character/${this.id}`);
         this.character = data;

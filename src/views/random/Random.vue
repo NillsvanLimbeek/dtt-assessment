@@ -1,17 +1,10 @@
 <template>
     <div class="random">
-        <CharacterDetail
-            v-if="Object.keys(character).length !== 0"
-            :id="character.id"
-        />
-        <LocationDetail
-            v-if="Object.keys(location).length !== 0"
-            :id="location.id"
-        />
-        <EpisodeDetail
-            v-if="Object.keys(episode).length !== 0"
-            :id="episode.id"
-        />
+        <CharacterDetail v-if="section === 'character'" :id="randomData.id" />
+        <LocationDetail v-if="section === 'location'" :id="randomData.id" />
+        <EpisodeDetail v-if="section === 'episode'" :id="randomData.id" />
+
+        <button @click="fetchRandomData">Show me something new!</button>
     </div>
 </template>
 
@@ -35,30 +28,22 @@ export default Vue.extend({
 
     data() {
         return {
-            character: {} as Character,
-            location: {} as Location,
-            episode: {} as Episode,
+            randomData: {} as Character | Location | Episode,
+            section: '' as string,
         };
     },
 
     methods: {
         async fetchRandomData() {
+            this.section = '';
+
             const { section, count } = apiData[Math.floor(Math.random() * 3)];
             const data = await fetchData<Character | Episode | Location>(
                 `${section}/${Math.ceil(Math.random() * count)}`,
             );
 
-            switch (section) {
-                case 'character':
-                    this.character = data as Character;
-                    break;
-                case 'location':
-                    this.location = data as Location;
-                    break;
-                case 'episode':
-                    this.episode = data as Episode;
-                    break;
-            }
+            this.section = section;
+            this.randomData = data;
         },
     },
 
