@@ -2,19 +2,49 @@
     @include flex-align;
     flex-direction: column;
 
-    width: 25rem;
-    height: 35rem;
-
-    margin: 2rem;
     border-radius: 5px;
-    margin-bottom: 1.5rem;
+    color: var((--color-black));
     text-decoration: none;
 }
 
 .character img {
     width: 100%;
+
+    margin-bottom: 1rem;
 }
 
-.character h2 {
-    margin: 0;
+.character__info {
+    width: 100%;
+}
+
+.character__info h3 {
+    margin: 0 0 1.5rem 0;
+    padding: 0 1.5rem;
+    text-align: center;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.character__section:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.character__section p:first-child {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.character__info p {
+    margin: 3px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.character__info p span {
+    font-weight: 600;
+    text-align: end;
 }

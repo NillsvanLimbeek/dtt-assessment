@@ -5,6 +5,7 @@ import { fetchData } from '../fetchData';
 
 const state: State = Vue.observable({
     characters: [],
+    sortedBy: 'name',
 });
 
 export const getters: Getters = {
@@ -19,13 +20,19 @@ export const getters: Getters = {
 
         return character;
     },
+
+    getSortedBy: () => state.sortedBy,
 };
 
 export const mutations: Mutations = {
     setCharacters: (characters: Character[]) => (state.characters = characters),
 
-    sortCharacters: (characters: Character[]) => {
+    setSortedCharacters: (characters: Character[]) => {
         state.characters.splice(0, state.characters.length, ...characters);
+    },
+
+    setSortedBy: (sort: 'name' | 'status' | 'episode') => {
+        state.sortedBy = sort;
     },
 };
 

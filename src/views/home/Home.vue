@@ -1,8 +1,28 @@
 <template>
     <main class="home">
-        <button @click="sortByEpisode">Sort by Episode</button>
-        <button @click="sortByName">Sort by Name</button>
-        <button @click="sortByStatus">Sort by Status</button>
+        <div class="home__buttons">
+            <button
+                class="home__button"
+                :class="{ 'home__button--active': getSortedBy === 'episode' }"
+                @click="sortByEpisode"
+            >
+                Sort by Episode
+            </button>
+            <button
+                class="home__button"
+                :class="{ 'home__button--active': getSortedBy === 'name' }"
+                @click="sortByName"
+            >
+                Sort by Name
+            </button>
+            <button
+                class="home__button"
+                :class="{ 'home__button--active': getSortedBy === 'status' }"
+                @click="sortByStatus"
+            >
+                Sort by Status
+            </button>
+        </div>
 
         <CardList type="character" :cards="getCharacters" />
     </main>
@@ -30,21 +50,28 @@ export default Vue.extend({
             const sorted = characters.sort((charA, charB) => {
                 return charB.episode.length - charA.episode.length;
             });
-            mutations.sortCharacters(sorted);
+            mutations.setSortedCharacters(sorted);
+            mutations.setSortedBy('episode');
         },
         sortByName() {
             const sorted = sortByString(this.getCharacters, 'name');
-            mutations.sortCharacters(sorted);
+            mutations.setSortedCharacters(sorted);
+            mutations.setSortedBy('name');
         },
         sortByStatus() {
             const sorted = sortByString(this.getCharacters, 'status');
-            mutations.sortCharacters(sorted);
+            mutations.setSortedCharacters(sorted);
+            mutations.setSortedBy('status');
         },
     },
 
     computed: {
         getCharacters() {
             return getters.getCharacters();
+        },
+
+        getSortedBy() {
+            return getters.getSortedBy();
         },
     },
 
