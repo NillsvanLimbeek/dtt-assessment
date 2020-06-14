@@ -3,11 +3,31 @@
         <img :src="character.image" :alt="character.name" class="detail__img" />
 
         <div class="detail__info">
-            <h3>Info</h3>
-            <h4>{{ character.name }}</h4>
+            <h2>Character Info</h2>
+
+            <div class="detail__row">
+                <div>
+                    <div class="detail__section">
+                        <p>Name</p>
+                        <p>{{ character.name }}</p>
+                    </div>
+
+                    <div class="detail__section">
+                        <p>Status</p>
+                        <p>{{ character.status }}</p>
+                    </div>
+
+                    <div class="detail__section">
+                        <p>Species</p>
+                        <p>{{ character.species }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="detail__episodes">
+            <h2>Episodes</h2>
+
             <EpisodeCard
                 v-if="Object.keys(episode).length > 0"
                 :episode="episode"
@@ -23,6 +43,7 @@ import Vue from 'vue';
 
 import { Character, Episode } from '@/lib/types';
 import { fetchData } from '@/lib/fetchData';
+import { getIds } from '@/lib/utils';
 
 import CardList from '@/components/card-list/CardList.vue';
 import EpisodeCard from '@/components/episode-card/EpisodeCard.vue';
@@ -51,10 +72,7 @@ export default Vue.extend({
 
     methods: {
         async getEpisodes() {
-            const episodeIds = this.character.episode.map((eps) => {
-                const split = eps.split('/');
-                return split[split.length - 1];
-            });
+            const episodeIds = getIds(this.character.episode);
 
             if (episodeIds.length === 1) {
                 this.episode = await fetchData<Episode>(
