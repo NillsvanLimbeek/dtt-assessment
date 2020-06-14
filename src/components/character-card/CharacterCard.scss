@@ -1,4 +1,4 @@
-.card {
+.character {
     @include flex-align;
     flex-direction: column;
 
@@ -7,10 +7,10 @@
     text-decoration: none;
 }
 
-.card img {
+.character img {
     width: 100%;
 }
 
-.card h2 {
+.character h2 {
     margin: 0;
 }
