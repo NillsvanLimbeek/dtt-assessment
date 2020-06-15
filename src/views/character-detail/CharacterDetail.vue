@@ -28,10 +28,9 @@
         <div class="detail__episodes">
             <h2>Episodes</h2>
 
-            <EpisodeCard
-                v-if="Object.keys(episode).length > 0"
-                :episode="episode"
-            />
+            <div class="detail__episode" v-if="Object.keys(episode).length > 0">
+                <EpisodeCard :episode="episode" />
+            </div>
 
             <CardList v-else type="episode" :cards="episodes" />
         </div>

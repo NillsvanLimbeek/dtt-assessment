@@ -16,8 +16,6 @@ h2 {
 
 .detail__img {
     grid-area: img;
-
-    width: 100%;
 }
 
 .detail__info {
@@ -50,4 +48,21 @@ h2 {
     border: 1px solid var(--color-grey);
 
     padding: 2rem;
+}
+
+.detail__episode {
+    border: 1px solid var(--color-grey);
+    width: 25rem;
+}
+
+@media (max-width: 576px) {
+    .detail {
+        display: grid;
+        grid-template-areas: 'img' 'info' 'episodes';
+        grid-template-columns: 1fr;
+    }
+
+    .detail__img {
+        width: 100%;
+    }
 }

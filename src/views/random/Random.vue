@@ -1,10 +1,12 @@
 <template>
     <div class="random">
+        <Button @click="fetchRandomData" button-class="button__secondary"
+            >Show me something new!</Button
+        >
+
         <CharacterDetail v-if="section === 'character'" :id="randomData.id" />
         <LocationDetail v-if="section === 'location'" :id="randomData.id" />
         <EpisodeDetail v-if="section === 'episode'" :id="randomData.id" />
-
-        <button @click="fetchRandomData">Show me something new!</button>
     </div>
 </template>
 
@@ -15,6 +17,7 @@ import { apiData } from '@/lib/apiData';
 import { fetchData } from '@/lib/utils';
 import { Character, Episode } from '@/lib/types';
 
+const Button = () => import('@/components/base-button/BaseButton.vue');
 const CharacterDetail = () => import('../character-detail/CharacterDetail.vue');
 const LocationDetail = () => import('../location-detail/LocationDetail.vue');
 const EpisodeDetail = () => import('../episode-detail/EpisodeDetail.vue');
@@ -23,6 +26,7 @@ export default Vue.extend({
     name: 'Radom',
 
     components: {
+        Button,
         CharacterDetail,
         LocationDetail,
         EpisodeDetail,
