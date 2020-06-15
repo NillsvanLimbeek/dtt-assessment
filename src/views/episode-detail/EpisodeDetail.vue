@@ -5,6 +5,7 @@
             <p>Air date: {{ episode.air_date }}</p>
         </div>
 
+        <h2>Characters:</h2>
         <CardList type="character" :cards="characters" />
     </div>
 </template>

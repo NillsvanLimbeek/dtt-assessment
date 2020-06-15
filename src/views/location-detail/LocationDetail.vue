@@ -1,17 +1,29 @@
 <template>
     <div class="location">
-        <h1>{{ location.name }}</h1>
+        <div class="location__info">
+            <h2>{{ location.name }}</h2>
+            <h3>{{ location.dimension }}</h3>
+        </div>
+
+        <h2>Residents:</h2>
+        <CardList type="character" :cards="characters" />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
-import { Location } from '@/lib/types';
-import { fetchData } from '@/lib/utils';
+import { Location, Character } from '@/lib/types';
+import { fetchData, getIds } from '@/lib/utils';
+
+const CardList = () => import('@/components/card-list/CardList.vue');
 
 export default Vue.extend({
     name: 'LocationDetail',
+
+    components: {
+        CardList,
+    },
 
     props: {
         id: {
@@ -24,12 +36,30 @@ export default Vue.extend({
     data() {
         return {
             location: {} as Location,
+            characters: [] as Character[],
         };
     },
 
-    async mounted() {
-        const data = await fetchData<Location>(`location/${this.id}`);
-        this.location = data;
+    methods: {
+        async fetchLocation() {
+            const data = await fetchData<Location>(`location/${this.id}`);
+            this.location = data;
+
+            this.fetchCharacters();
+        },
+
+        async fetchCharacters() {
+            const characterIds = getIds(this.location.residents);
+            const characters = await fetchData<Character[]>(
+                `character/${characterIds}`,
+            );
+
+            this.characters = characters;
+        },
+    },
+
+    mounted() {
+        this.fetchLocation();
     },
 });
 </script>
