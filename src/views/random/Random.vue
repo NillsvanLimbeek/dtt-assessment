@@ -13,14 +13,28 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import { apiData } from '@/lib/apiData';
 import { fetchData } from '@/lib/utils';
-import { Character, Episode } from '@/lib/types';
+import { Character, Episode, ApiData } from '@/lib/types';
 
 const Button = () => import('@/components/base-button/BaseButton.vue');
 const CharacterDetail = () => import('../character-detail/CharacterDetail.vue');
 const LocationDetail = () => import('../location-detail/LocationDetail.vue');
 const EpisodeDetail = () => import('../episode-detail/EpisodeDetail.vue');
+
+const apiData: ApiData[] = [
+    {
+        section: 'character',
+        count: 591,
+    },
+    {
+        section: 'location',
+        count: 94,
+    },
+    {
+        section: 'episode',
+        count: 36,
+    },
+];
 
 export default Vue.extend({
     name: 'Random',
