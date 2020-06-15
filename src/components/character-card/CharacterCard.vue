@@ -34,6 +34,7 @@ import { getters } from '@/lib/store/characters';
 
 export default Vue.extend({
     name: 'CharacterCard',
+
     props: {
         character: {
             type: Object as () => Character,
@@ -41,11 +42,13 @@ export default Vue.extend({
             default: null,
         },
     },
+
     data() {
         return {
             data: {} as Character,
         };
     },
+
     mounted() {
         if (this.character && this.character.id) {
             this.data = getters.getCharacter(this.character.id);

@@ -15,14 +15,14 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import { Character, Episode } from '../../lib/types';
+import { Character, Episode, CardType } from '@/lib/types';
 
-import CharacterCard from '../character-card/CharacterCard.vue';
-import EpisodeCard from '../episode-card/EpisodeCard.vue';
-
-type CardType = 'character' | 'episode';
+const CharacterCard = () => import('../character-card/CharacterCard.vue');
+const EpisodeCard = () => import('../episode-card/EpisodeCard.vue');
 
 export default Vue.extend({
+    name: 'CardList',
+
     props: {
         cards: {
             type: Array as () => Character[] | Episode[],
@@ -35,6 +35,7 @@ export default Vue.extend({
             default: 'character',
         },
     },
+
     components: {
         CharacterCard,
         EpisodeCard,

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 import { Character, State, Actions, Getters, Mutations } from '@/lib/types';
-import { fetchData } from '../fetchData';
+import { fetchData } from '@/lib/utils';
 
 const state: State = Vue.observable({
     characters: [],

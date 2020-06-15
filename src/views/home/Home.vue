@@ -34,7 +34,7 @@ import Vue from 'vue';
 import { getters, actions, mutations } from '@/lib/store/characters';
 import { sortByString } from '@/lib/utils/sortData';
 
-import CardList from '@/components/card-list/CardList.vue';
+const CardList = () => import('@/components/card-list/CardList.vue');
 
 export default Vue.extend({
     name: 'Home',
@@ -53,11 +53,13 @@ export default Vue.extend({
             mutations.setSortedCharacters(sorted);
             mutations.setSortedBy('episode');
         },
+
         sortByName() {
             const sorted = sortByString(this.getCharacters, 'name');
             mutations.setSortedCharacters(sorted);
             mutations.setSortedBy('name');
         },
+
         sortByStatus() {
             const sorted = sortByString(this.getCharacters, 'status');
             mutations.setSortedCharacters(sorted);

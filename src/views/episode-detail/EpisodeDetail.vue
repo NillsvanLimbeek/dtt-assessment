@@ -8,9 +8,11 @@
 import Vue from 'vue';
 
 import { Episode } from '@/lib/types';
-import { fetchData } from '@/lib/fetchData';
+import { fetchData } from '@/lib/utils';
 
 export default Vue.extend({
+    name: 'EpisodeDetail',
+
     props: {
         id: {
             type: Number,
@@ -18,11 +20,13 @@ export default Vue.extend({
             default: null,
         },
     },
+
     data() {
         return {
             episode: {} as Episode,
         };
     },
+
     async mounted() {
         const episode = await fetchData<Episode>(`episode/${this.id}`);
         this.episode = episode;

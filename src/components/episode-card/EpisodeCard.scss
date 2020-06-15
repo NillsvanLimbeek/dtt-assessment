@@ -1,7 +1,21 @@
 .episode {
-    height: 15rem;
-    width: 15rem;
+    text-decoration: none;
+    color: var(--color-black);
+}
 
-    border: 1px solid black;
-    border-radius: 5px;
+.episode__section {
+    margin-bottom: 1.5rem;
+}
+
+.episode__section p:first-child {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.episode__section p {
+    margin: 3px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

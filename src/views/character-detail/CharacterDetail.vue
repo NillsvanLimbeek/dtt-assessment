@@ -42,13 +42,14 @@
 import Vue from 'vue';
 
 import { Character, Episode } from '@/lib/types';
-import { fetchData } from '@/lib/fetchData';
-import { getIds } from '@/lib/utils';
+import { getIds, fetchData } from '@/lib/utils';
 
-import CardList from '@/components/card-list/CardList.vue';
-import EpisodeCard from '@/components/episode-card/EpisodeCard.vue';
+const CardList = () => import('@/components/card-list/CardList.vue');
+const EpisodeCard = () => import('@/components/episode-card/EpisodeCard.vue');
 
 export default Vue.extend({
+    name: 'CharacterDetail',
+
     props: {
         id: {
             type: Number,

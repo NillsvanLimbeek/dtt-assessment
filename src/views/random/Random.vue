@@ -11,15 +11,17 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import { apiData } from '@/lib/ApiData';
-import { fetchData } from '@/lib/fetchData';
+import { apiData } from '@/lib/apiData';
+import { fetchData } from '@/lib/utils';
 import { Character, Episode } from '@/lib/types';
 
-import CharacterDetail from '@/views/character-detail/CharacterDetail.vue';
-import LocationDetail from '@/views/location-detail/LocationDetail.vue';
-import EpisodeDetail from '@/views/episode-detail/EpisodeDetail.vue';
+const CharacterDetail = () => import('../character-detail/CharacterDetail.vue');
+const LocationDetail = () => import('../location-detail/LocationDetail.vue');
+const EpisodeDetail = () => import('../episode-detail/EpisodeDetail.vue');
 
 export default Vue.extend({
+    name: 'Radom',
+
     components: {
         CharacterDetail,
         LocationDetail,
