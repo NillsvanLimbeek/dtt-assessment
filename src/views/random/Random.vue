@@ -23,7 +23,7 @@ const LocationDetail = () => import('../location-detail/LocationDetail.vue');
 const EpisodeDetail = () => import('../episode-detail/EpisodeDetail.vue');
 
 export default Vue.extend({
-    name: 'Radom',
+    name: 'Random',
 
     components: {
         Button,
