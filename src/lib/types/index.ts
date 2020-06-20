@@ -6,3 +6,4 @@ export * from './CardType';
 export * from './SortBy';
 export * from './CharacterState';
 export * from './RootState';
+export * from './Social';

@@ -13,14 +13,16 @@
 
             <div class="footer__social">
                 <ul>
-                    <a
-                        v-for="(social, index) in socials"
-                        :key="index"
-                        :href="social.link"
-                        target="_blank"
-                    >
-                        <i :class="social.icon"></i>
-                    </a>
+                    <li>
+                        <a
+                            v-for="(social, index) in socials"
+                            :key="index"
+                            :href="social.link"
+                            target="_blank"
+                        >
+                            <i :class="social.icon"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -29,6 +31,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
+
+import { Social } from '@/lib/types';
 
 export default Vue.extend({
     name: 'Footer',
@@ -46,7 +50,7 @@ export default Vue.extend({
                     link:
                         'https://www.linkedin.com/in/nills-van-limbeek-610a0753/',
                 },
-            ],
+            ] as Social[],
         };
     },
 });
