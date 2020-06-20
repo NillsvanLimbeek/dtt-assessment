@@ -1,21 +1,8 @@
 .episode {
     text-decoration: none;
     color: var(--color-black);
-}
 
-.episode__section {
-    margin-bottom: 1.5rem;
-}
-
-.episode__section p:first-child {
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.episode__section p {
-    margin: 3px;
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    div {
+        padding: 5px;
+    }
 }

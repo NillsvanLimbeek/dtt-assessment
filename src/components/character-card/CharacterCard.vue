@@ -6,22 +6,11 @@
         <img :src="character.image" :alt="character.name" />
 
         <div class="character__info">
-            <h3>{{ character.name }}</h3>
+            <h3 class="character__name">{{ character.name }}</h3>
 
-            <div class="character__section">
-                <p>Status</p>
-                <p>{{ character.status }}</p>
-            </div>
-
-            <div class="character__section">
-                <p>Episodes</p>
-                <p>{{ character.episode.length }}</p>
-            </div>
-
-            <div class="character__section">
-                <p>Location</p>
-                <p>{{ character.location.name }}</p>
-            </div>
+            <InfoSection title="Status" :info="character.status" />
+            <InfoSection title="Episodes" :info="character.episode.length" />
+            <InfoSection title="Location" :info="character.location.name" />
         </div>
     </RouterLink>
 </template>
@@ -30,6 +19,8 @@
 import Vue from 'vue';
 
 import { Character } from '@/lib/types';
+
+const InfoSection = () => import('@/components/info-section/InfoSection.vue');
 
 export default Vue.extend({
     name: 'CharacterCard',
@@ -40,6 +31,10 @@ export default Vue.extend({
             required: true,
             default: null,
         },
+    },
+
+    components: {
+        InfoSection,
     },
 
     data() {
