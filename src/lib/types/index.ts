@@ -3,5 +3,6 @@ export * from './Location';
 export * from './Episode';
 export * from './ApiData';
 export * from './CardType';
-
-export * from './Store';
+export * from './SortBy';
+export * from './CharacterState';
+export * from './RootState';

@@ -27,9 +27,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { mapGetters } from 'vuex';
 
-import { getters, actions, mutations } from '@/lib/store/characters';
 import { sortByString } from '@/lib/utils/sortData';
+import { Character } from '../../lib/types';
 
 const Button = () => import('@/components/base-button/BaseButton.vue');
 const CardList = () => import('@/components/card-list/CardList.vue');
@@ -44,40 +45,46 @@ export default Vue.extend({
 
     methods: {
         sortByEpisode() {
-            const characters = this.getCharacters;
+            const characters: Character[] = this.getCharacters;
 
             const sorted = characters.sort((charA, charB) => {
                 return charB.episode.length - charA.episode.length;
             });
-            mutations.setSortedCharacters(sorted);
-            mutations.setSortedBy('episode');
+
+            this.$store.dispatch('characters/setSortedCharacters', {
+                characters: sorted,
+                sort: 'episode',
+            });
         },
 
         sortByName() {
             const sorted = sortByString(this.getCharacters, 'name');
-            mutations.setSortedCharacters(sorted);
-            mutations.setSortedBy('name');
+
+            this.$store.dispatch('characters/setSortedCharacters', {
+                sorted,
+                sort: 'name',
+            });
         },
 
         sortByStatus() {
             const sorted = sortByString(this.getCharacters, 'status');
-            mutations.setSortedCharacters(sorted);
-            mutations.setSortedBy('status');
+
+            this.$store.dispatch('characters/setSortedCharacters', {
+                sorted,
+                sort: 'status',
+            });
         },
     },
 
     computed: {
-        getCharacters() {
-            return getters.getCharacters();
-        },
-
-        getSortedBy() {
-            return getters.getSortedBy();
-        },
+        ...mapGetters({
+            getCharacters: 'characters/getCharacters',
+            getSortedBy: 'characters/getSortedBy',
+        }),
     },
 
     created() {
-        actions.fetchCharacters();
+        this.$store.dispatch('characters/fetchCharacters');
     },
 });
 </script>

@@ -22,5 +22,4 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" src="./LocationCard.scss">
-</style>
+<style lang="scss" src="./LocationCard.scss"></style>

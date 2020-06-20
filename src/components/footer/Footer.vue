@@ -52,5 +52,4 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" src="./Footer.scss">
-</style>
+<style lang="scss" src="./Footer.scss"></style>

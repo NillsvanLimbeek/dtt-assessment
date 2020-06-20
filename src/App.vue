@@ -21,5 +21,4 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" src="./styling/main.scss">
-</style>
+<style lang="scss" src="./styling/main.scss"></style>
