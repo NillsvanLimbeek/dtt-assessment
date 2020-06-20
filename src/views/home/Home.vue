@@ -61,7 +61,7 @@ export default Vue.extend({
             const sorted = sortByString(this.getCharacters, 'name');
 
             this.$store.dispatch('characters/setSortedCharacters', {
-                sorted,
+                characters: sorted,
                 sort: 'name',
             });
         },
@@ -70,7 +70,7 @@ export default Vue.extend({
             const sorted = sortByString(this.getCharacters, 'status');
 
             this.$store.dispatch('characters/setSortedCharacters', {
-                sorted,
+                characters: sorted,
                 sort: 'status',
             });
         },
