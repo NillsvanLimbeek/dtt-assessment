@@ -1,5 +1,8 @@
 <template>
-    <RouterLink :to="{ name: 'LocationDetail', params: { id: location.id } }">
+    <RouterLink
+        :to="{ name: 'LocationDetail', params: { id: location.id } }"
+        class="location"
+    >
         <InfoSection title="Name" :info="location.name" />
         <InfoSection title="Dimension" :info="location.dimension" />
         <InfoSection title="Residents" :info="location.residents.length" />

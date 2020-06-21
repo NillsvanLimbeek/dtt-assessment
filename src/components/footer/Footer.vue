@@ -41,7 +41,7 @@ export default Vue.extend({
 
     data() {
         return {
-            links: ['Home', 'Random'],
+            links: ['Home', 'Categories', 'Random'],
             socials: [
                 {
                     icon: 'fab fa-github',

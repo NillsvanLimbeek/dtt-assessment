@@ -5,4 +5,8 @@
     div {
         padding: 5px;
     }
+
+    &:hover {
+        color: var(--color-blue);
+    }
 }

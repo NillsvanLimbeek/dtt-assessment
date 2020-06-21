@@ -1,12 +1,10 @@
 .detail {
+    @include view-base;
+
     display: grid;
     grid-template-areas: 'img info' 'location location' 'episodes episodes' 'related related';
     grid-template-columns: 1fr 3fr;
     gap: 1.5rem;
-
-    max-width: 114rem;
-    margin: 0 auto;
-    padding: 7.5rem 0;
 }
 
 h2 {

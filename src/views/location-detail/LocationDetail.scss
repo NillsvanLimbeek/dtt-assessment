@@ -1,7 +1,5 @@
 .location {
-    max-width: 114rem;
-    margin: 0 auto;
-    padding: 7.5rem 0;
+    @include view-base;
 }
 
 .location__info {

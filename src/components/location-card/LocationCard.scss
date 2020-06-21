@@ -1,0 +1,12 @@
+.location {
+    text-decoration: none;
+    color: var(--color-black);
+
+    div {
+        padding: 5px;
+    }
+
+    &:hover {
+        color: var(--color-blue);
+    }
+}

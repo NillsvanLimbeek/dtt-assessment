@@ -19,6 +19,14 @@ const routes: Array<RouteConfig> = [
             ),
     },
     {
+        path: '/categories',
+        name: 'Categories',
+        component: () =>
+            import(
+                /* webpackChunkName: "random" */ '@/views/categories/Categories.vue'
+            ),
+    },
+    {
         path: '/character/:id',
         name: 'CharacterDetail',
         component: () =>

@@ -12,6 +12,15 @@
                     Home
                 </RouterLink>
                 <RouterLink
+                    :to="{ name: 'Categories' }"
+                    class="nav__link"
+                    :class="{
+                        'nav__link--active': $route.name === 'Categories',
+                    }"
+                >
+                    Categories
+                </RouterLink>
+                <RouterLink
                     :to="{ name: 'Random' }"
                     class="nav__link"
                     :class="{ 'nav__link--active': $route.name === 'Random' }"

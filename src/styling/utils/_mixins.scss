@@ -1,3 +1,4 @@
+// flexbox
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -12,4 +13,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+// views base
+@mixin view-base {
+    max-width: 114rem;
+    margin: 0 auto;
+    padding: 7.5rem 0;
 }

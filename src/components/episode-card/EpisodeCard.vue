@@ -1,5 +1,8 @@
 <template>
-    <RouterLink :to="{ name: 'EpisodeDetail', params: { id: episode.id } }">
+    <RouterLink
+        :to="{ name: 'EpisodeDetail', params: { id: episode.id } }"
+        class="episode"
+    >
         <InfoSection title="Number" :info="episode.episode" />
         <InfoSection title="Name" :info="episode.name" />
         <InfoSection title="Characters" :info="episode.characters.length" />
