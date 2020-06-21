@@ -1,7 +1,9 @@
 <template>
     <div class="footer">
         <div class="footer__wrapper">
-            <p>Made with <i class="fas fa-heart"></i> by Nills van Limbeek</p>
+            <p class="footer__text">
+                Made with <i class="fas fa-heart"></i> by Nills van Limbeek
+            </p>
 
             <div class="footer__links">
                 <ul>

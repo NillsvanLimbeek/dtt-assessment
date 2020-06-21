@@ -4,6 +4,6 @@
     padding-top: 7.5rem;
 }
 
-.random button {
-    align-items: center;
+.random__button {
+    @include flex-center;
 }

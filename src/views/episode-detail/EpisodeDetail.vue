@@ -27,7 +27,7 @@ export default Vue.extend({
 
     props: {
         id: {
-            type: Number,
+            type: [Number, String],
             required: true,
             default: null,
         },

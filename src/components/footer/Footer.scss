@@ -31,3 +31,14 @@
         }
     }
 }
+
+.footer__text {
+    flex: 0 0 33%;
+    font-size: 1.35rem;
+}
+
+@media (max-width: 425px) {
+    .footer__text {
+        display: none;
+    }
+}

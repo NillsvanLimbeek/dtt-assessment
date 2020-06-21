@@ -1,8 +1,10 @@
 <template>
     <div class="random">
-        <Button @click="fetchRandomData" button-class="button__secondary"
-            >Show me something new!</Button
-        >
+        <div class="random__button">
+            <Button @click="fetchRandomData" button-class="button__secondary"
+                >Show me something new!</Button
+            >
+        </div>
 
         <CharacterDetail v-if="section === 'character'" :id="randomData.id" />
         <LocationDetail v-if="section === 'location'" :id="randomData.id" />
@@ -64,7 +66,6 @@ export default Vue.extend({
 
             this.section = section;
             this.randomData = data;
-            console.log(this.randomData);
         },
     },
 

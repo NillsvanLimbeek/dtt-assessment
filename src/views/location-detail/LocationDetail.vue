@@ -66,7 +66,6 @@ export default Vue.extend({
         async fetchLocation() {
             const data = await fetchData<Location>(`location/${this.id}`);
             this.location = data;
-            console.log(data);
 
             this.fetchCharacters();
             this.fetchRelated();
