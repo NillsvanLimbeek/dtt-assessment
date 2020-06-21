@@ -1,7 +1,7 @@
 import { Module, GetterTree, MutationTree, ActionTree } from 'vuex';
 
 import { RootState, CharacterState, Character, SortBy } from '@/lib/types';
-import { fetchData } from '../utils';
+import { fetchData, randomNumbers } from '../utils';
 
 const state: CharacterState = {
     characters: [],
@@ -39,14 +39,9 @@ const mutations: MutationTree<CharacterState> = {
 
 const actions: ActionTree<CharacterState, RootState> = {
     async fetchCharacters({ commit }) {
-        const randomNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-            .map((_num) => {
-                return Math.floor(Math.random() * 350);
-            })
-            .join(',');
-
+        const randomIds = randomNumbers(10, 350);
         const characters = await fetchData<Character[]>(
-            `character/${randomNumbers}`,
+            `character/${randomIds}`,
         );
 
         commit('setCharacters', characters);

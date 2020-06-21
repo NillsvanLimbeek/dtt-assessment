@@ -1,1 +1,1 @@
-export type CardType = 'character' | 'episode';
+export type CardType = 'character' | 'episode' | 'location';

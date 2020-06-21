@@ -5,6 +5,12 @@
         </li>
     </ul>
 
+    <ul v-else-if="type === 'location'" class="card-list">
+        <li v-for="card in cards" :key="card.id">
+            <LocationCard :location="card" />
+        </li>
+    </ul>
+
     <ul v-else class="card-list">
         <li v-for="card in cards" :key="card.id">
             <EpisodeCard :episode="card" />
@@ -19,6 +25,7 @@ import { Character, Episode, CardType } from '@/lib/types';
 
 const CharacterCard = () => import('../character-card/CharacterCard.vue');
 const EpisodeCard = () => import('../episode-card/EpisodeCard.vue');
+const LocationCard = () => import('../location-card/LocationCard.vue');
 
 export default Vue.extend({
     name: 'CardList',
@@ -39,6 +46,7 @@ export default Vue.extend({
     components: {
         CharacterCard,
         EpisodeCard,
+        LocationCard,
     },
 });
 </script>

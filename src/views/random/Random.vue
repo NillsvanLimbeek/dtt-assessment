@@ -64,6 +64,7 @@ export default Vue.extend({
 
             this.section = section;
             this.randomData = data;
+            console.log(this.randomData);
         },
     },
 

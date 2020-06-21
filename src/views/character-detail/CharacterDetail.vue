@@ -20,11 +20,15 @@
         <div v-if="episodes" class="detail__episodes">
             <h2>Episodes</h2>
 
-            <div class="detail__episode" v-if="Object.keys(episode).length > 0">
-                <EpisodeCard :episode="episode" />
-            </div>
+            <CardList
+                v-if="Array.isArray(episodes)"
+                type="episode"
+                :cards="episodes"
+            />
 
-            <CardList v-else type="episode" :cards="episodes" />
+            <div v-else class="detail__episode">
+                <EpisodeCard :episode="episodes" />
+            </div>
         </div>
 
         <div v-if="related.length" class="detail__related">
@@ -38,7 +42,7 @@
 import Vue from 'vue';
 
 import { Character, Episode, Location } from '@/lib/types';
-import { getIds, fetchData } from '@/lib/utils';
+import { getIds, fetchData, randomNumbers } from '@/lib/utils';
 
 const CardList = () => import('@/components/card-list/CardList.vue');
 const EpisodeCard = () => import('@/components/episode-card/EpisodeCard.vue');
@@ -77,8 +81,7 @@ export default Vue.extend({
     data() {
         return {
             character: {} as Character,
-            episodes: [] as Episode[],
-            episode: {} as Episode,
+            episodes: [] as Episode[] | Episode,
             location: {} as Location,
             related: [] as Character[],
         };
@@ -95,15 +98,9 @@ export default Vue.extend({
         async getEpisodes() {
             const episodeIds = getIds(this.character.episode);
 
-            if (episodeIds.length === 1) {
-                this.episode = await fetchData<Episode>(
-                    `episode/${episodeIds}`,
-                );
-            } else {
-                this.episodes = await fetchData<Episode[]>(
-                    `episode/${episodeIds}`,
-                );
-            }
+            this.episodes = await fetchData<Episode[] | Episode>(
+                `episode/${episodeIds}`,
+            );
 
             this.getLocation();
             this.getRelated();
@@ -124,20 +121,18 @@ export default Vue.extend({
 
             if (related.info.count > 1) {
                 // get random species
-                const randomSpecies = [0, 1, 2].map((_num) => {
-                    return related.results[
-                        Math.ceil(Math.random() * related.results.length)
-                    ];
+                const randomNum = randomNumbers(3, related.results.length);
+                const randomSpecies = randomNum.map((num) => {
+                    return related.results[num];
                 });
 
                 this.related = randomSpecies;
             } else {
                 // get random characters on same location
                 const residentIds = getIds(this.location.residents);
-                const randomLocation = [0, 1, 2].map((_num) => {
-                    return residentIds[
-                        Math.ceil(Math.random() * residentIds.length)
-                    ];
+                const randomNum = randomNumbers(3, residentIds.length);
+                const randomLocation = randomNum.map((num) => {
+                    return residentIds[num];
                 });
 
                 const related = await fetchData<Character[]>(
